@@ -1,0 +1,28 @@
+<div class="container">
+    <h2>Search Product</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <input type="text" ng-model="searchQuery" ng-change="searchProducts()" class="form-control"
+                    placeholder="Search Products" />
+
+                <div ng-show="showNotFoundMessage" class="alert alert-warning" role="alert">
+                    No products found for '{{ searchQuery }}'
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+               <div ng-repeat="product in products | filter: {title: searchQuery}" class="panel panel-default">
+                    <div class="panel-body">
+                        <h2>{{ product.title }}</h2>
+                        <p>{{ product.description }}</p>
+                        <img ng-src="{{ product.image }}" alt="{{ product.title }}" class="img-responsive"
+                            style="max-width: 200px" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
